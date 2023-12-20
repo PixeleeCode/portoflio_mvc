@@ -38,8 +38,8 @@ class HomeController
                     $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
                     $phpmailer->SMTPAuth = true;
                     $phpmailer->Port = 2525;
-                    $phpmailer->Username = '12c249cb761888';
-                    $phpmailer->Password = '369a32395491ea';
+                    $phpmailer->Username = '<Identifiant>';
+                    $phpmailer->Password = '<Mot de passe>';
 
                     // Envoi du mail
                     $phpmailer->setFrom($email, $name); // Expéditeur
