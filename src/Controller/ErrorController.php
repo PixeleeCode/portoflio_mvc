@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
-class ErrorController {
-
+class ErrorController extends AbstractController
+{
+    /**
+     * Affiche une page d'erreur 404 - Not Found
+     */
     public function error404(): void
     {
-        require_once '../templates/errors/404.php';
+        $this->view('errors/404.php');
     }
 }

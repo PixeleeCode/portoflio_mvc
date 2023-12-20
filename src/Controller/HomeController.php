@@ -4,14 +4,15 @@ namespace App\Controller;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class HomeController
+class HomeController extends AbstractController
 {
     /**
      * Page d'accueil
      */
     public function index(): void
     {
-        require_once '../templates/home/index.php';
+        // require_once '../templates/home/index.php';
+        $this->view('home/index.php');
     }
 
     /**
@@ -19,6 +20,9 @@ class HomeController
      */
     public function contact(): void
     {
+        $error = null;
+        $success = null;
+
         // Si une méthode POST est reçue
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -65,6 +69,9 @@ class HomeController
         }
 
         // Affichage du template
-        require_once '../templates/home/contact.php';
+        $this->view('home/contact.php', [
+            'error' => $error,
+            'success' => $success
+        ]);
     }
 }
