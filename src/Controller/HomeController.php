@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 class HomeController
