@@ -11,7 +11,7 @@ $router = new Router();
 
 // Nos routes
 $router->add('/', 'HomeController', 'index');
-$router->add('/contact', 'HomeController', 'contact');
+$router->add('/test', 'HomeController', 'test');
 
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);
