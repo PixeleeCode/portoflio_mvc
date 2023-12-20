@@ -41,15 +41,15 @@ class HomeController extends AbstractController
                     // Connecter au SMTP de MailTrap
                     $phpmailer = new PHPMailer();
                     $phpmailer->isSMTP();
-                    $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+                    $phpmailer->Host = $_ENV['MAIL_SMTP'];
                     $phpmailer->SMTPAuth = true;
-                    $phpmailer->Port = 2525;
-                    $phpmailer->Username = '<Identifiant>';
-                    $phpmailer->Password = '<Mot de passe>';
+                    $phpmailer->Port = $_ENV['MAIL_PORT'];
+                    $phpmailer->Username = $_ENV['MAIL_USER'];
+                    $phpmailer->Password = $_ENV['MAIL_PASS'];
 
                     // Envoi du mail
                     $phpmailer->setFrom($email, $name); // Expéditeur
-                    $phpmailer->addAddress('guillaume@demo.com', 'Guillaume'); // Destinataire
+                    $phpmailer->addAddress($_ENV['USER_EMAIL'], $_ENV['USER_NAME']); // Destinataire
                     $phpmailer->Subject = 'Message du formulaire de contact';
                     $phpmailer->Body = $message;
 

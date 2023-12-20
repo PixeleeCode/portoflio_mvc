@@ -3,6 +3,10 @@
 // Chargement des dépendances PHP
 require_once '../vendor/autoload.php';
 
+// Chargement des variables d'environnements
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../');
+$dotenv->load();
+
 // Chargement du Router
 require_once '../core/Router.php';
 
