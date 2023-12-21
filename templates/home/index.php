@@ -18,7 +18,7 @@
                         Posté le <?php echo $project->getCreatedAt()->format('d.m.Y'); ?>
                     </small>
                     <img
-                        src="imgs/<?php echo $project->getPreview(); ?>"
+                        src="<?php echo $project->getFolderPreview(); ?>"
                         alt="<?php echo $project->getTitle(); ?>"
                         class="img-fluid rounded"
                     >
