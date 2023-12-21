@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 class Projet
 {
     private int $id;

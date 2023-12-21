@@ -1,5 +1,9 @@
 <?php
 
+namespace Core;
+
+use PDO;
+
 /**
  * Permet de gérer la connexion avec PDO (PHP Data Object)
  */
@@ -32,8 +36,8 @@ abstract class Database
                     ]
                 );
             }
-        } catch(Exception $exception) {
-            throw new PDOException("Erreur sur la BDD : {$exception->getMessage()}");
+        } catch(\Exception $exception) {
+            throw new \PDOException("Erreur sur la BDD : {$exception->getMessage()}");
         }
 
         // Retour de l'objet PDO
