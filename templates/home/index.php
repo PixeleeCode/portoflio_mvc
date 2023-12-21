@@ -28,7 +28,7 @@
                     ?>
                     </p>
 
-                    <a href="" class="btn btn-sm btn-primary">
+                    <a href="/projet/details?id=<?php echo $project->getId();?>" class="btn btn-sm btn-primary">
                         En savoir plus...
                     </a>
                 </article>

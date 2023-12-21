@@ -20,6 +20,25 @@ class HomeController extends AbstractController
     }
 
     /**
+     * Détail d'un projet
+     */
+    public function details(): void
+    {
+        $projetRepository = new ProjetRepository();
+        $project = $projetRepository->find($_GET['id']);
+
+        // Erreur 404 ?
+        if (!$project) {
+            header('Location: /404');
+            exit;
+        }
+
+        $this->view('home/details.php', [
+            'project' => $project
+        ]);
+    }
+
+    /**
      * Page de contact
      */
     public function contact(): void

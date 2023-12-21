@@ -11,9 +11,20 @@ $dotenv->load();
 $router = new Core\Router();
 
 // Nos routes
+// Accueil
 $router->add('/', 'HomeController', 'index');
+
+// Formulaire de contact
 $router->add('/contact', 'HomeController', 'contact');
+
+// Insertion de données d'essais
 $router->add('/fixtures', 'FixtureController', 'index');
+
+// Détail d'un projet
+$router->add('/projet/details', 'HomeController', 'details');
+
+// Erreur 404
+$router->add('/404', 'ErrorController', 'error404');
 
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);
