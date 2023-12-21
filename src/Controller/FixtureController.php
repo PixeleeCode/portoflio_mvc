@@ -19,7 +19,7 @@ class FixtureController extends AbstractController
         for ($i = 0; $i < 10; $i++) {
             // Créer un objet avec l'entité "Projet"
             $projet = new Projet();
-            $projet->setTitle($faker->sentences);
+            $projet->setTitle($faker->sentence);
             $projet->setDescription($faker->realText);
             $projet->setPreview('test.png');
             $projet->setCreatedAt($faker->dateTimeBetween('-2 years')->format('Y-m-d'));
