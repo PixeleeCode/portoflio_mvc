@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ProjetRepository;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class HomeController extends AbstractController
@@ -11,7 +12,11 @@ class HomeController extends AbstractController
      */
     public function index(): void
     {
-        // require_once '../templates/home/index.php';
+        $projetRepository = new ProjetRepository();
+        $projects = $projetRepository->findAll();
+
+        dump($projects);
+
         $this->view('home/index.php');
     }
 

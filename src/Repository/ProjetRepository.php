@@ -40,4 +40,28 @@ class ProjetRepository extends Database
         // Retourne notre objet muni d'un ID
         return $projet;
     }
+
+    /**
+     * Sélectionne tous les projets
+     */
+    public function findAll(): array
+    {
+        $objectsProjects = [];
+        $query = $this->instance->query("SELECT * FROM projets ORDER BY created_at DESC");
+        $projects = $query->fetchAll();
+
+        foreach ($projects as $project) {
+            $item = new Projet();
+            $item->setId($project->id);
+            $item->setTitle($project->title);
+            $item->setDescription($project->description);
+            $item->setPreview($project->preview);
+            $item->setCreatedAt($project->created_at);
+            $item->setUpdatedAt($project->updated_at);
+
+            $objectsProjects[] = $item;
+        }
+
+        return $objectsProjects;
+    }
 }
