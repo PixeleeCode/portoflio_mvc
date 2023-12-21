@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use App\Controller;
+use App\Controller\ErrorController;
 
 /**
  * Permet de rediriger l'utilisateur selon une adresse personnalisée
@@ -69,7 +69,7 @@ class Router
         // Force le code de retour à 404
         http_response_code(404);
 
-        $errorInstance = new App\Controller\ErrorController();
+        $errorInstance = new ErrorController();
         $errorInstance->error404();
     }
 
