@@ -43,7 +43,11 @@ class Projet
 
     public function getPreview(): string
     {
-        return $this->preview;
+        // Si l'image n'existe pas, j'en attribue une par défaut
+        return (!file_exists("imgs/{$this->preview}"))
+            ? 'default.png'
+            : $this->preview
+        ;
     }
 
     public function setPreview(string $preview): void
@@ -51,9 +55,9 @@ class Projet
         $this->preview = $preview;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): \DateTime
     {
-        return $this->createdAt;
+        return \DateTime::createFromFormat('Y-m-d H:i:s', $this->createdAt);
     }
 
     public function setCreatedAt(string $createdAt): void
