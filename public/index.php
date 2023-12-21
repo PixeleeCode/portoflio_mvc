@@ -7,11 +7,8 @@ require_once '../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../');
 $dotenv->load();
 
-// Chargement du Router
-require_once '../core/Router.php';
-
 // Instancier notre routeur afin de rediriger notre utilisateur
-$router = new Router();
+$router = new Core\Router();
 
 // Nos routes
 $router->add('/', 'HomeController', 'index');

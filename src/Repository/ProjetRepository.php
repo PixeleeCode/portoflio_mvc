@@ -5,12 +5,9 @@ namespace App\Repository;
 use App\Entity\Projet;
 use Core\Database;
 
-/**
- * ProjetRepository.php
- */
 class ProjetRepository extends Database
 {
-    private $instance;
+    private \PDO $instance;
 
     public function __construct()
     {
