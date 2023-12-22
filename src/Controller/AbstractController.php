@@ -2,8 +2,21 @@
 
 namespace App\Controller;
 
+// use App\Entity\User;
+
 abstract class AbstractController
 {
+    /**
+     * Vérifie si l'utilisateur est connecté
+     */
+    protected function isUserLoggedIn(): bool
+    {
+        /**
+         * Je vérifie que la session nommée "user" existe bien
+         */
+        return isset($_SESSION['user']);
+    }
+
     /**
      * Permet d'afficher une vue
      */

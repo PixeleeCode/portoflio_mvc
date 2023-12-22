@@ -29,6 +29,9 @@ $router->add('/projet/details', 'HomeController', 'details');
 // Connexion
 $router->add('/login', 'AuthController', 'login');
 
+// Accueil de l'administration
+$router->add('/admin', 'AdminController', 'index');
+
 // Erreur 404
 $router->add('/404', 'ErrorController', 'error404');
 
