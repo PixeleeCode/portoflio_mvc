@@ -23,6 +23,9 @@ $router->add('/fixtures', 'FixtureController', 'index');
 // Détail d'un projet
 $router->add('/projet/details', 'HomeController', 'details');
 
+// Connexion
+$router->add('/login', 'AuthController', 'login');
+
 // Erreur 404
 $router->add('/404', 'ErrorController', 'error404');
 
