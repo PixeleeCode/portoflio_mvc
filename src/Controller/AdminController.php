@@ -154,7 +154,7 @@ class AdminController extends AbstractController
         $this->view('admin/project/edit.php', [
             'projet' => $projet,
             'error' => $error ?? null, // $error !== null ? $error : null
-            'success' => $success ?? null // Coalescence des NULL
+            'success' => $success ?? null // Coalescence des nuls (Nullish coalescing operator)
         ]);
     }
 }
