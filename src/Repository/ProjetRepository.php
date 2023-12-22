@@ -15,6 +15,18 @@ class ProjetRepository extends Database
     }
 
     /**
+     * Supprime en base de données
+     */
+    public function delete(Projet $projet): Projet
+    {
+        $query = $this->instance->prepare("DELETE FROM projets WHERE id = :id");
+        $query->bindValue(':id', $projet->getId());
+        $query->execute();
+
+        return $projet;
+    }
+
+    /**
      * Edition en base de données
      */
     public function edit(Projet $projet): Projet

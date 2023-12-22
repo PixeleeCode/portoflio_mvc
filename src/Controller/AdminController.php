@@ -157,4 +157,34 @@ class AdminController extends AbstractController
             'success' => $success ?? null // Coalescence des nuls (Nullish coalescing operator)
         ]);
     }
+
+    /**
+     * Suppression
+     */
+    public function delete(): void
+    {
+        // Si l'ID n'existe pas ou est vide, redirection vers l'accueil de l'administration
+        if (empty($_GET['id'])) {
+            header('Location: /admin');
+            exit;
+        }
+
+        $projetRepository = new ProjetRepository();
+        $projet = $projetRepository->find($_GET['id']);
+
+        // Si aucun projet avec cet ID
+        if (!$projet) {
+            header('Location: /admin');
+            exit;
+        }
+
+        // Suppression de l'ID en base de données
+        $projetRepository = new ProjetRepository();
+        $projetRepository->delete($projet);
+
+        // Supprime l'image du projet
+        unlink($projet->getFolderPreview());
+
+        header('Location: /admin?success=Votre projet a bien été supprimé');
+    }
 }
