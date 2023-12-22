@@ -28,19 +28,20 @@
             <form method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Titre du projet</label>
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" value="<?php echo $projet->getTitle(); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                    <textarea class="form-control" id="description" rows="3" name="description"><?php echo $projet->getDescription(); ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="preview" class="form-label">Aperçu du projet</label>
                     <input class="form-control" type="file" id="preview" name="preview">
+                    <img src="../../<?php echo $projet->getFolderPreview(); ?>" alt="Image" class="img-fluid">
                 </div>
                 <div class="mt-4">
-                    <button class="btn btn-success">Enregistrer le projet</button>
-                    <a href="/admin" class="btn btn-light ml-3">Annuler</a>
+                    <button class="btn btn-success">Modifier le projet</button>
+                    <a href="/admin" class="btn btn-light ml-5">Annuler</a>
                 </div>
             </form>
         </div>

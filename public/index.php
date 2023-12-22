@@ -38,6 +38,9 @@ $router->add('/admin', 'AdminController', 'index');
 // Administration - Ajout d'un projet
 $router->add('/admin/new/project', 'AdminController', 'add');
 
+// Administration - Edition d'un projet
+$router->add('/admin/edit/project', 'AdminController', 'edit');
+
 // Erreur 404
 $router->add('/404', 'ErrorController', 'error404');
 

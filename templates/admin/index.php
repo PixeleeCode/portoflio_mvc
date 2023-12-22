@@ -30,7 +30,7 @@
                             <td class="py-4"><?php echo $project->getTitle(); ?></td>
                             <td class="py-4"><?php echo $project->getCreatedAt()->format('d.m.Y'); ?></td>
                             <td class="py-3">
-                                <a href="" class="btn btn-outline-secondary">
+                                <a href="/admin/edit/project?id=<?php echo $project->getId(); ?>" class="btn btn-outline-secondary">
                                     Editer
                                 </a>
                                 <a href="" class="btn btn-outline-danger">

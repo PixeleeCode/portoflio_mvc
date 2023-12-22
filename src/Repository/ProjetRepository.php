@@ -15,6 +15,30 @@ class ProjetRepository extends Database
     }
 
     /**
+     * Edition en base de données
+     */
+    public function edit(Projet $projet): Projet
+    {
+        $query = $this->instance->prepare("
+            UPDATE projets SET 
+                title = :title, description = :description, preview = :preview,
+                created_at = :created_at, updated_at = :updated_at
+            WHERE id = :id
+        ");
+
+        $query->bindValue(':title', $projet->getTitle());
+        $query->bindValue(':description', $projet->getDescription());
+        $query->bindValue(':preview', $projet->getPreview());
+        $query->bindValue(':created_at', $projet->getCreatedAt()->format('Y-m-d H:i:s'));
+        $query->bindValue(':updated_at', $projet->getUpdatedAt());
+        $query->bindValue(':id', $projet->getId());
+        $query->execute();
+
+        // Retourne notre objet
+        return $projet;
+    }
+
+    /**
      * Insertion en base de données
      */
     public function add(Projet $projet): Projet
