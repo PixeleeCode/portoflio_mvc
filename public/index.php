@@ -29,6 +29,9 @@ $router->add('/projet/details', 'HomeController', 'details');
 // Connexion
 $router->add('/login', 'AuthController', 'login');
 
+// Déconnexion
+$router->add('/logout', 'AuthController', 'logout');
+
 // Accueil de l'administration
 $router->add('/admin', 'AdminController', 'index');
 

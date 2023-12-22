@@ -10,6 +10,16 @@ use App\Repository\UserRepository;
 class AuthController extends AbstractController
 {
     /**
+     * Déconnexion de l'utilisateur
+     */
+    public function logout(): void
+    {
+        unset($_SESSION['user']);
+
+        header('Location: /');
+    }
+
+    /**
      * Connexion à l'administration
      */
     public function login()

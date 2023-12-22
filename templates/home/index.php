@@ -11,6 +11,13 @@
         <div class="container mx-auto p-5">
             <h1 class="pb-5">Mes beaux projets 🤩</h1>
 
+            <!-- Affiche un message si l'utilisateur est connecté -->
+            <?php if($isLoggedIn): ?>
+                <div class="alert alert-success">
+                    Bonjour <?php echo $_SESSION['user']->getUsername(); ?> !
+                </div>
+            <?php endif; ?>
+
             <?php foreach($projects as $project): ?>
                 <article class="pb-5">
                     <h1><?php echo $project->getTitle(); ?></h1>

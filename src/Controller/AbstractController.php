@@ -23,6 +23,8 @@ abstract class AbstractController
      */
     protected function view(string $path, array $vars = []): void
     {
+        $vars['isLoggedIn'] = $this->isUserLoggedIn();
+
         /**
          * Extrait les clés comme des variables et affectent comme valeur,
          * la valeur de la clé du tableau
