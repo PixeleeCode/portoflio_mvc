@@ -1,10 +1,10 @@
 <?php
 
-// Démarrage de session
-session_start();
-
 // Chargement des dépendances PHP
 require_once '../vendor/autoload.php';
+
+// Démarrage de session
+session_start();
 
 // Chargement des variables d'environnements
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../');

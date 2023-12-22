@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-// use App\Entity\User;
+use App\Entity\User;
 
 abstract class AbstractController
 {
@@ -12,9 +12,10 @@ abstract class AbstractController
     protected function isUserLoggedIn(): bool
     {
         /**
-         * Je vérifie que la session nommée "user" existe bien
+         * Je vérifie que la session nommée "user" existe bien et que celle-ci a été instancié
+         * avec la classe User
          */
-        return isset($_SESSION['user']);
+        return isset($_SESSION['user']) && $_SESSION['user'] instanceof User;
     }
 
     /**
