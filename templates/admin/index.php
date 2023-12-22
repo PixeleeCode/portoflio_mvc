@@ -11,7 +11,7 @@
         <div class="container mx-auto p-5">
             <div class="d-flex justify-content-between align-items-center pb-5">
                 <h1>Administration</h1>
-                <a href="" class="btn btn-success">Nouveau</a>
+                <a href="/admin/new/project" class="btn btn-success">Nouveau</a>
             </div>
 
             <table class="table table-hover">

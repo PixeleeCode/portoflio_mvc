@@ -32,8 +32,11 @@ $router->add('/login', 'AuthController', 'login');
 // Déconnexion
 $router->add('/logout', 'AuthController', 'logout');
 
-// Accueil de l'administration
+// Administration - Accueil
 $router->add('/admin', 'AdminController', 'index');
+
+// Administration - Ajout d'un projet
+$router->add('/admin/new/project', 'AdminController', 'add');
 
 // Erreur 404
 $router->add('/404', 'ErrorController', 'error404');
