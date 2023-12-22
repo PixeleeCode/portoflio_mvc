@@ -129,19 +129,23 @@ class AdminController extends AbstractController
                     $preview = $uploadService->upload($_FILES['preview'], $preview);
                 }
 
-                // Date du jour
-                $date = new \DateTime();
+                if ($preview) {
+                    // Date du jour
+                    $date = new \DateTime();
 
-                // Modifie l'entité Projet
-                $projet->setTitle($title);
-                $projet->setDescription($description);
-                $projet->setPreview($preview);
-                $projet->setUpdatedAt($date->format('d.m.Y'));
+                    // Modifie l'entité Projet
+                    $projet->setTitle($title);
+                    $projet->setDescription($description);
+                    $projet->setPreview($preview);
+                    $projet->setUpdatedAt($date->format('d.m.Y'));
 
-                $projetRepository = new ProjetRepository();
-                $projetRepository->edit($projet);
+                    $projetRepository = new ProjetRepository();
+                    $projetRepository->edit($projet);
 
-                $success = 'Votre nouveau projet est enregistré';
+                    $success = 'Votre nouveau projet est enregistré';
+                } else {
+                    $error = 'Le fichier est invalide';
+                }
             } else {
                 $error = 'Tous les champs sont obligatoires';
             }
