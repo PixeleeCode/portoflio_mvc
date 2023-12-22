@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\ProjetRepository;
+
 class AdminController extends AbstractController
 {
     public function __construct()
@@ -21,6 +23,11 @@ class AdminController extends AbstractController
      */
     public function index(): void
     {
-        $this->view('admin/index.php');
+        // Sélection de tous les articles
+        $projetRepository = new ProjetRepository();
+
+        $this->view('admin/index.php', [
+            'projects' => $projetRepository->findAll()
+        ]);
     }
 }
