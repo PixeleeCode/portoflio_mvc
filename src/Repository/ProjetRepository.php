@@ -27,7 +27,7 @@ class ProjetRepository extends Database
         $query->bindValue(':title', $projet->getTitle());
         $query->bindValue(':description', $projet->getDescription());
         $query->bindValue(':preview', $projet->getPreview());
-        $query->bindValue(':created_at', $projet->getCreatedAt());
+        $query->bindValue(':created_at', $projet->getCreatedAt()->format('Y-m-d H:i:s'));
         $query->bindValue(':updated_at', $projet->getUpdatedAt());
         $query->execute();
 
