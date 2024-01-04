@@ -56,5 +56,8 @@ $router->add('/api/all/projects', 'ApiController', 'loadAllProjects');
 // Retourne les infos d'un projet
 $router->add('/api/project', 'ApiController', 'loadDetailsProject');
 
+// Moteur de recherche
+$router->add('/api/search', 'ApiController', 'searchProjects');
+
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);

@@ -11,7 +11,14 @@
     </head>
     <body>
         <div class="container mx-auto p-5">
-            <h1 class="pb-5">Mes beaux projets 🤩</h1>
+            <div class="row">
+                <div class="col-8">
+                    <h1 class="pb-5">Mes beaux projets 🤩</h1>
+                </div>
+                <div class="col-4">
+                    <input type="search" id="search" class="form-control mt-2" placeholder="Rechercher...">
+                </div>
+            </div>
 
             <!-- Affiche un message si l'utilisateur est connecté -->
             <?php if($isLoggedIn): ?>

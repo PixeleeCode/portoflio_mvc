@@ -126,4 +126,31 @@ class ProjetRepository extends Database
 
         return $objectProject;
     }
+
+    public function search(string $querySearch): array
+    {
+        $objectProjects = [];
+        $query = $this->instance->prepare("
+            SELECT * FROM projets 
+            WHERE title LIKE :querySearch OR description LIKE :querySearch 
+            ORDER BY created_at DESC
+        ");
+
+        $query->bindValue(':querySearch', "%$querySearch%");
+        $query->execute();
+
+        foreach($query->fetchAll() as $project) {
+            $item = new Projet();
+            $item->setId($project->id);
+            $item->setTitle($project->title);
+            $item->setDescription($project->description);
+            $item->setPreview($project->preview);
+            $item->setCreatedAt($project->created_at);
+            $item->setUpdatedAt($project->updated_at);
+
+            $objectProjects[] = $item->jsonSerialize();
+        }
+
+        return $objectProjects;
+    }
 }

@@ -42,4 +42,15 @@ class ApiController extends AbstractController
 
         echo json_encode($project->jsonSerialize());
     }
+
+    /**
+     * Moteur de recherche
+     */
+    public function searchProjects()
+    {
+        $repository = new ProjetRepository();
+        $projects = $repository->search($_GET['query']);
+
+        echo json_encode($projects);
+    }
 }

@@ -17,6 +17,27 @@ fetch('/api/all/projects')
     .catch(error => console.error(error))
 
 /**
+ * Moteur de recherche
+ * Ecouteur d'évènement réagissant au changement dans le champ texte
+ */
+document.querySelector('#search').addEventListener('input', function() {
+    const searchTerm = this.value
+
+    fetch(`/api/search?query=${searchTerm}`)
+        .then(response => response.json())
+        .then(projects => {
+            // Vider la liste des projets sur l'accueil
+            document.querySelector('#listing-projects').textContent = ''
+
+            // Affiche les projets correspondant à ma recherche
+            projects.forEach(project => {
+                createCard(project)
+            })
+        })
+        .catch(error => console.error(error))
+})
+
+/**
  * Récupère les détails d'un projet
  */
 function readProject(idProject)
@@ -37,6 +58,9 @@ function readProject(idProject)
             // Supprime la div "alerte" d'un utilisateur connecté
             document.querySelector('.alert-success').remove()
 
+            // Videz l'affichage actuel
+            document.querySelector('#listing-projects').textContent = '';
+
             // Créer la fiche du produit
             createCard(project, true)
 
@@ -51,17 +75,6 @@ function readProject(idProject)
  */
 function createCard(project, onlyOneProject = false)
 {
-    const container = document.querySelector('#listing-projects')
-
-    /**
-     * S'il s'agit d'un seul projet pour les infos,
-     * vide le contenu de la div affichant tous les projets
-     */
-    if (onlyOneProject) {
-        // Permet de vider le contenu d'un élément HTML
-        container.textContent = ''
-    }
-
     const template = document.querySelector('#project').content
     const article = document.importNode(template, true)
 
