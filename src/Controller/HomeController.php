@@ -12,11 +12,7 @@ class HomeController extends AbstractController
      */
     public function index(): void
     {
-        $projetRepository = new ProjetRepository();
-
-        $this->view('home/index.php', [
-            'projects' => $projetRepository->findAll()
-        ]);
+        $this->view('home/index.php');
     }
 
     /**

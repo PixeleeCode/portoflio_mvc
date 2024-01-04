@@ -47,5 +47,11 @@ $router->add('/admin/delete/project', 'AdminController', 'delete');
 // Erreur 404
 $router->add('/404', 'ErrorController', 'error404');
 
+/**
+ * API Routes
+ */
+// Retourne tous les projets au format JSON
+$router->add('/api/all/projects', 'ApiController', 'loadAllProjects');
+
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);

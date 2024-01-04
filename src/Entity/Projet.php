@@ -82,4 +82,12 @@ class Projet
     {
         $this->updatedAt = $updatedAt;
     }
+
+    public function jsonSerialize(): array
+    {
+        $project = get_object_vars($this);
+        $project['folderPreview'] = $this->getFolderPreview();
+
+        return $project;
+    }
 }

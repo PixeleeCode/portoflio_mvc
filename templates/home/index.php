@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Portfolio</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="css/loader.css" rel="stylesheet">
+        <script src="js/projects.js" defer></script>
     </head>
     <body>
         <div class="container mx-auto p-5">
@@ -18,29 +20,26 @@
                 </div>
             <?php endif; ?>
 
-            <?php foreach($projects as $project): ?>
-                <article class="pb-5">
-                    <h1><?php echo $project->getTitle(); ?></h1>
-                    <small class="d-block text-secondary pb-2">
-                        Posté le <?php echo $project->getCreatedAt()->format('d.m.Y'); ?>
-                    </small>
-                    <img
-                        src="<?php echo $project->getFolderPreview(); ?>"
-                        alt="<?php echo $project->getTitle(); ?>"
-                        class="img-fluid rounded"
-                    >
-                    <p>
-                    <?php
-                        echo mb_strimwidth($project->getDescription(), 0, 75, '...');
-                    ?>
-                    </p>
+            <div id="loader" class="text-center my-5">
+                <span class="loader d-block mb-2"></span>
+                Chargement des projets...
+            </div>
 
-                    <a href="/projet/details?id=<?php echo $project->getId();?>" class="btn btn-sm btn-primary">
-                        En savoir plus...
-                    </a>
-                </article>
-            <?php endforeach; ?>
-
+            <!-- Liste de tous les projets -->
+            <div id="listing-projects"></div>
         </div>
+
+        <!-- Template pour afficher mes projets -->
+        <template id="project">
+            <article class="pb-5">
+                <h1></h1>
+                <small class="d-block text-secondary pb-2"></small>
+                <img src="" alt="" class="img-fluid rounded">
+                <p></p>
+                <a href="" class="btn btn-sm btn-primary">
+                    En savoir plus...
+                </a>
+            </article>
+        </template>
     </body>
 </html>

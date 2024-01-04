@@ -80,7 +80,7 @@ class ProjetRepository extends Database
     /**
      * Sélectionne tous les projets
      */
-    public function findAll(): array
+    public function findAll(bool $serialize = false): array
     {
         $objectsProjects = [];
         $query = $this->instance->query("SELECT * FROM projets ORDER BY created_at DESC");
@@ -95,7 +95,7 @@ class ProjetRepository extends Database
             $item->setCreatedAt($project->created_at);
             $item->setUpdatedAt($project->updated_at);
 
-            $objectsProjects[] = $item;
+            $objectsProjects[] = $serialize ? $item->jsonSerialize() : $item;
         }
 
         return $objectsProjects;
