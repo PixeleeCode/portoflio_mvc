@@ -24,6 +24,13 @@ function readProject(idProject)
     fetch(`/api/project?id=${idProject}`)
         .then(response => response.json())
         .then(project => {
+
+            // Erreur 404
+            if (project.code && project.code === 404) {
+                // Redirection vers la page 404
+                document.location.href = '/404'
+            }
+
             // Modifie le titre du H1 de la page
             document.querySelector('h1').textContent = 'Mon projet'
 
@@ -65,7 +72,6 @@ function createCard(project, onlyOneProject = false)
     article.querySelector('small').textContent = `Posté le ${date.toLocaleDateString('fr')}`
     article.querySelector('img').src = project.folderPreview
     article.querySelector('img').alt = project.title
-
 
     // S'il s'agit d'un seul projet, on retire le bouton "En savoir plus..."
     if (onlyOneProject) {

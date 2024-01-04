@@ -35,7 +35,7 @@ class ApiController extends AbstractController
         // Erreur 404 ?
         if (!$project) {
             echo json_encode([
-                'success' => false
+                'code' => 404
             ]);
             exit;
         }
