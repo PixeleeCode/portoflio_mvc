@@ -21,8 +21,13 @@
             <?php endif; ?>
 
             <div id="loader" class="text-center my-5">
-                <span class="loader d-block mb-2"></span>
-                Chargement des projets...
+                <span class="cat d-block mb-2">
+                    <span class="cat__body"></span>
+                    <span class="cat__body"></span>
+                    <span class="cat__tail"></span>
+                    <span class="cat__head"></span>
+                </span>
+                Chat...rgement des projets...
             </div>
 
             <!-- Liste de tous les projets -->
