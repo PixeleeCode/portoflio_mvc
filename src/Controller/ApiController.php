@@ -53,4 +53,15 @@ class ApiController extends AbstractController
 
         echo json_encode($projects);
     }
+
+    /**
+     * Aime un projet
+     */
+    public function love()
+    {
+        $repository = new ProjetRepository();
+        $repository->isLove($_GET['id']);
+
+        echo json_encode([]);
+    }
 }

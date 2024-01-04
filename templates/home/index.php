@@ -51,6 +51,11 @@
                 <button type="button" class="btn btn-sm btn-primary">
                     En savoir plus...
                 </button>
+                <?php if($isLoggedIn): ?>
+                    <button type="button" class="btn btn-sm btn-danger">
+                        J'aime
+                    </button>
+                <?php endif ?>
             </article>
         </template>
     </body>

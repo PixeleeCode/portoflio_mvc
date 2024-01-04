@@ -59,5 +59,8 @@ $router->add('/api/project', 'ApiController', 'loadDetailsProject');
 // Moteur de recherche
 $router->add('/api/search', 'ApiController', 'searchProjects');
 
+// Like un projet
+$router->add('/api/love', 'ApiController', 'love');
+
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);

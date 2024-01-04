@@ -153,4 +153,15 @@ class ProjetRepository extends Database
 
         return $objectProjects;
     }
+
+    public function isLove(int $idProjet): void
+    {
+        $query = $this->instance->prepare("
+            INSERT INTO projets_likes (user_id, projet_id) VALUES (:user_id, :projet_id)
+        ");
+
+        $query->bindValue(':user_id', $_SESSION['user']->getId());
+        $query->bindValue(':projet_id', $idProjet);
+        $query->execute();
+    }
 }

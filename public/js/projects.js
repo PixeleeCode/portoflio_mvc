@@ -12,7 +12,7 @@ fetch('/api/all/projects')
             projects.forEach(project => {
                 createCard(project)
             })
-        }, 2000)
+        }, 50)
     })
     .catch(error => console.error(error))
 
@@ -81,10 +81,19 @@ function createCard(project, onlyOneProject = false)
     // Gère le format date
     const date = new Date(project.createdAt)
 
+    article.querySelector('article').id = `project-id-${project.id}`
     article.querySelector('h1').textContent = project.title
     article.querySelector('small').textContent = `Posté le ${date.toLocaleDateString('fr')}`
     article.querySelector('img').src = project.folderPreview
     article.querySelector('img').alt = project.title
+
+    // Bouton Love
+    const btnLove = article.querySelector('.btn-danger')
+    if (btnLove) {
+        article.querySelector('.btn-danger').addEventListener('click', () => {
+            isLove(project.id, article)
+        })
+    }
 
     // S'il s'agit d'un seul projet, on retire le bouton "En savoir plus..."
     if (onlyOneProject) {
@@ -99,4 +108,16 @@ function createCard(project, onlyOneProject = false)
     }
 
     document.querySelector('#listing-projects').appendChild(article)
+}
+
+function isLove(idProject)
+{
+    fetch(`/api/love?id=${idProject}`)
+        .then(response => response.json())
+        .then(() => {
+            const article = document.querySelector(`article#project-id-${idProject}`)
+            article.querySelector('.btn-danger').textContent = 'Déjà aimé'
+            article.querySelector('.btn-danger').disabled = true
+        })
+        .catch(error => console.error(error))
 }
