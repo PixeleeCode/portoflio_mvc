@@ -53,5 +53,8 @@ $router->add('/404', 'ErrorController', 'error404');
 // Retourne tous les projets au format JSON
 $router->add('/api/all/projects', 'ApiController', 'loadAllProjects');
 
+// Retourne les infos d'un projet
+$router->add('/api/project', 'ApiController', 'loadDetailsProject');
+
 // Dispatch
 $router->dispatch($_SERVER['REQUEST_URI']);

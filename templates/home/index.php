@@ -41,9 +41,9 @@
                 <small class="d-block text-secondary pb-2"></small>
                 <img src="" alt="" class="img-fluid rounded">
                 <p></p>
-                <a href="" class="btn btn-sm btn-primary">
+                <button type="button" class="btn btn-sm btn-primary">
                     En savoir plus...
-                </a>
+                </button>
             </article>
         </template>
     </body>

@@ -23,4 +23,23 @@ class ApiController extends AbstractController
         $repository = new ProjetRepository();
         echo json_encode($repository->findAll(true));
     }
+
+    /**
+     * Récupérer les infos d'un projet
+     */
+    public function loadDetailsProject()
+    {
+        $repository = new ProjetRepository();
+        $project = $repository->find($_GET['id']);
+
+        // Erreur 404 ?
+        if (!$project) {
+            echo json_encode([
+                'success' => false
+            ]);
+            exit;
+        }
+
+        echo json_encode($project->jsonSerialize());
+    }
 }
