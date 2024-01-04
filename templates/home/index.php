@@ -27,7 +27,7 @@
                     <span class="cat__tail"></span>
                     <span class="cat__head"></span>
                 </span>
-                Chat...rgement des projets...
+                <strong>Chat</strong>rgement des projets...
             </div>
 
             <!-- Liste de tous les projets -->
